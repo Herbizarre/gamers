@@ -1,0 +1,60 @@
+<nav class="navbar-expand-lg navbar fixed-top sticky-top" style="padding: 10px 50px; background-color: #14213d;">
+	<img src="/assets/images/gamers.png" class="rounded-circle" width="50">
+	<button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse" id="collapsibleNavId">
+		<ul class="navbar-nav me-auto mt-2 mt-lg-0">
+			<li>
+				<a href="{{ path('app_home')}}" class="nav-link px-2 text-white">Accueil
+				</a>
+			</li>
+			<li>
+				<a href="{{ path('app_catalogue')}}" class="nav-link px-2 text-white">Catalogue</a>
+			</li>
+			<li><a href="/cart" class="nav-link px-2 text-white">Panier </a></li>
+			<li>
+				<a href="#" class="nav-link px-2 text-white">A propos</a>
+			</li>
+
+		</ul>
+
+		{% if app.user %}
+
+			{# Condition pour utilisateur #}
+
+		{% else %}
+			{# Condition pour non-utilisateur #}
+
+			<a href="{{ path('app_login')}}">
+				<button type="button" class="btn btn-warning">Connexion</button>
+			</a>
+		{% endif %}
+	</div>
+	&nbsp; &nbsp;
+	{% if is_granted("ROLE_USER") %}
+		<div class="dropstart text-end">
+			<a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+				<img src="/assets/images/utilisateur.png" alt="mdo" width="40" height="40" class="rounded-circle">
+			</span>
+		</a>
+		<ul id="burger" class="dropdown-menu dropdown-menu-right text-small">
+			<li>
+
+			{% endif %}
+			{% if is_granted("ROLE_ADMIN") %}
+				<li>
+					<a class="dropdown-item" href="{{ path('admin') }}">
+						<i class="fa-solid fa-house-user"></i>
+						Dashboard</a>
+				</li>
+			{% endif %}
+			<li><hr></li>
+			{% if is_granted("ROLE_USER") %}
+				<a class="dropdown-item" href="{{ path('app_logout') }}">Déconnexion</a>
+			</li>
+		</ul>
+	</div>
+
+{% endif %}</div></div></nav>

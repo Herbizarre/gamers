@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catalogue
+{% endblock %}
+
+{% block body %}
+			<div class="row row-cols-1 row-cols-md-3 g-4 mt-3 p-4">
+		{% for product in product %}
+			<div class="col">
+				<div class="card h-100">
+					<div class="card-header">
+						{{product.category}}
+					</div>
+					<img class="card-img-top img-fluid m-auto mt-3 w-50 h-50 img_card" src="/assets/uploads/products/{{product.image}}" alt="FIFA 22 {{product.nom}}">
+					<div class="card-body">
+						<h5 class="card-title ">{{product.nom}}</h5>
+						<p class="card-text">{{product.description|striptags|slice(0, 100)~ "..."}}|</p>
+					</div>
+					<div class="card-footer">
+					<div class="row"> 
+						<div class="col">
+						<span class="card-text text-left">{{product.prix /100 }}€</span>
+						</div>
+						<div class="col">
+						<a href="{{path("cart_add", {id: product.id})}}" class="btn btn-success text-right">
+						<i class="bi bi-cart-plus"></i>Ajouter au panier</a>
+						</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+		{% endblock %}
