@@ -23,24 +23,21 @@ class RegistrationFormType extends AbstractType
             'attr'=>[
                 'class'=>'form-control mt-2'
             ],
-            'label'=>'Nom',
-            'label_attr'=>['class'=>'mt-3']
         ])
         ->add('prenom',TextType::class,[
             'attr'=>[
                 'class'=>'form-control mt-2'
             ],
             'label'=>'Prénom',
-            'label_attr'=>['class'=>'mt-3']
         ])
         ->add('email',TextType::class,[
             'attr'=>[
                 'class'=>'form-control mt-2'
             ],
             'label'=>'Votre Email',
-            'label_attr'=>['class'=>'mt-3']
         ])
         ->add('agreeTerms', CheckboxType::class, [
+            'label'=>'Accepter les conditions ',
             'mapped' => false,
             'constraints' => [
                 new IsTrue([
@@ -56,18 +53,14 @@ class RegistrationFormType extends AbstractType
                     'class' => 'form-control'
                 ],
                 'label' => 'Mot de passe',
-                'label_attr' => [
-                    'class' => 'form-label mt-4'
-                ]
+              
             ],
             'second_options' => [
                 'attr' => [
                     'class' => 'form-control'
                 ],
                 'label' => 'Confirmation du mot de passe',
-                'label_attr' => [
-                    'class' => 'form-label mt-4'
-                ]
+            
             ],
             'invalid_message' => 'Les mots de passe ne sont pas identique',
 
