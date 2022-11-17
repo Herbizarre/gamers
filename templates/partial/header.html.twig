@@ -14,12 +14,12 @@
 				<a href="{{ path('app_catalogue')}}" class="nav-link px-2 text-white">Catalogue</a>
 			</li>
 			<li>
-				<a href="#" class="nav-link px-2 text-white">A propos</a>
+				<a href="{{ path('app_about')}}" class="nav-link px-2 text-white">A propos</a>
 			</li>
 
 		</ul>
 		
-<a href="/cart" class="nav-link px-2 text-white"><img src="/assets/images/panier.png" class="rounded-circle" width="50"></a>
+<a href="/cart" class="nav-link px-2 text-white"><img src="/assets/images/panier.png" class="rounded-circle" width="40"></a>
 		{% if app.user %}
 
 			{# Condition pour utilisateur #}
@@ -46,7 +46,6 @@
 			{% if is_granted("ROLE_ADMIN") %}
 				<li>
 					<a class="dropdown-item" href="{{ path('admin') }}">
-						<i class="fa-solid fa-house-user"></i>
 						Dashboard</a>
 				</li>
 			{% endif %}
