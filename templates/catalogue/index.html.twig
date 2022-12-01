@@ -4,31 +4,36 @@
 {% endblock %}
 
 {% block body %}
-			<div class="row row-cols-1 row-cols-md-3 g-4 mt-3 p-4">
+	{% for message in app.flashes('message') %}
+		<div class="row row-cols-1 row-cols-md-3 g-1 p-3">
+			<div class="">{{message}}</div>
+		</div>
+	{% endfor %}
+	<div class="row row-cols-1 row-cols-md-3 g-4 mt-2 p-4">
 		{% for product in product %}
 			<div class="col">
 				<div class="card h-100">
-					<div class="card-header">
+					<div class="card-header text-muted">
 						{{product.category}}
 					</div>
 					<img class="card-img-top img-fluid m-auto mt-3 w-50 h-50 img_card" src="/assets/uploads/products/{{product.image}}" alt="FIFA 22 {{product.nom}}">
 					<div class="card-body">
-						<h5 class="card-title ">{{product.nom}}</h5>
-						<p class="card-text">{{product.description|striptags|slice(0, 100)~ "..."}}|</p>
+						<h5 class="card-title text-muted">{{product.nom}}</h5>
+						<p class="card-text text-muted">{{product.description|striptags|slice(0, 100)~ "..."}}|</p>
 					</div>
 					<div class="card-footer">
-					<div class="row"> 
-						<div class="col">
-						<span class="card-text text-left">{{product.prix /100 }}€</span>
-						</div>
-						<div class="col">
-						<a href="{{path("cart_add", {id: product.id})}}" class="btn btn-success text-right">
-						<i class="bi bi-cart-plus"></i>Ajouter au panier</a>
-						</div>
+						<div class="row">
+							<div class="col">
+								<span class="card-text text-left text-muted">{{product.prix /100 }}€</span>
+							</div>
+							<div class="col">
+								<a href="{{path("cart_addP", {id: product.id})}}" class="btn btn-success text-right">
+									<i class="bi bi-cart-plus"></i>Ajouter au panier</a>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		{% endfor %}
 	</div>
-		{% endblock %}
+{% endblock %}

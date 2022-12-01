@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification du profil de
+	{{ app.user.nom }}
+	{{ app.user.prenom }}
+{% endblock %}
+
+{% block body %}
+	{% for message in app.flashes('messageP') %}
+		<div class="row row-cols-1 row-cols-md-3 g-1 p-3">
+			<div class="">{{message}}</div>
+		</div>
+	{% endfor %}
+
+	<div class="p-3 bg-opacity-10 border border-start-0 rounded justify-content-center">
+		<div class="p-3 bg-opacity-10 justify-content-center text-muted">
+			<h1>Modification du profil de
+				{{ app.user.nom }}
+				{{ app.user.prenom }}</h1>
+			<div class="row row-cols-1 row-cols-md-3 g-4 mt-3 p-4 justify-content-center">
+				<div class="p-3 bg-opacity-10 border border-start-0 rounded justify-content-center">
+					{{ form(form) }}
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	{% endblock %}

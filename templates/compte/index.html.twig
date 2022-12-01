@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil de 
+	{{ app.user.nom }}
+	{{ app.user.prenom }}
+{% endblock %}
+
+{% block body %}
+
+	
+    <div class="card m-auto mt-3 text-muted" style="width: 30rem; ">
+  <div class="card-body">
+    <h3 class="card-title">Profil de 
+				{{ app.user.prenom }}
+				{{ app.user.nom }}</h3>
+    <p class="card-text">Nom :
+			{{ app.user.nom }}</p>
+    <p class="card-text">Prénom :
+    {{ app.user.prenom }}</p>
+    <p class="card-text">Email :
+    {{ app.user.email }}</p>
+    <a href="{{ path('compte_profil_modifier')}}" class="btn btn-primary">Modifier son profil</a>
+  </div>
+</div>
+{% endblock %}

@@ -1,11 +1,18 @@
-/* .img_card{
-    width: 100%;
-    height: 200px;
-    max-width: 200px;
-    max-height: 250px;
-    min-height: 200px;
-} */
+body {
+    background-color: white;
+    color: #222;
+}
 
-.card-home{
+.dark-mode {
+    background-color: #222;
+    color: white;
+}
+
+.nuit{
+    background-color: black;
+    color: white;
+}
+
+.card-home {
     height: 450px;
 }

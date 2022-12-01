@@ -1,11 +1,11 @@
-<nav class="navbar-expand-lg navbar fixed-top sticky-top" style="padding: 10px 50px; background-color: #14213d;">
+<nav class="navbar-expand-lg navbar fixed-top sticky-top" style="padding: 10px 50px; background-color: #000000;">
 	<img src="/assets/images/gamers.png" class="rounded-circle" width="50">
-	<button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+	<button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation" style="background-color: white">
 		<span class="navbar-toggler-icon"></span>
 	</button>
 
 	<div class="collapse navbar-collapse" id="collapsibleNavId">
-		<ul class="navbar-nav me-auto mt-2 mt-lg-0">
+		<ul class="navbar-nav me-auto mt-2 mt-lg-0 ">
 			<li>
 				<a href="{{ path('app_home')}}" class="nav-link px-2 text-white">Accueil
 				</a>
@@ -18,15 +18,15 @@
 			</li>
 
 		</ul>
-		
-<a href="/cart" class="nav-link px-2 text-white"><img src="/assets/images/panier.png" class="rounded-circle" width="40"></a>
+		<button class="nuit" onclick="nuit()">Mode nuit</button>
+		<a href="/cart" class="nav-link px-2 text-white"><img src="/assets/images/panier.png" class="rounded-circle" width="40"></a>
 		{% if app.user %}
 
 			{# Condition pour utilisateur #}
 
 		{% else %}
 			{# Condition pour non-utilisateur #}
-			
+
 			<a href="{{ path('app_login')}}">
 				<button type="button" class="btn btn-warning">Connexion</button>
 			</a>
@@ -41,19 +41,18 @@
 		</a>
 		<ul id="burger" class="dropdown-menu dropdown-menu-right text-small">
 			<li>
-
-			{% endif %}
-			{% if is_granted("ROLE_ADMIN") %}
-				<li>
-					<a class="dropdown-item" href="{{ path('admin') }}">
-						Dashboard</a>
-				</li>
-			{% endif %}
-			<li><hr></li>
-			{% if is_granted("ROLE_USER") %}
-				<a class="dropdown-item" href="{{ path('app_logout') }}">Déconnexion</a>
+				<a class="dropdown-item" href="/compte">Compte</a>
 			</li>
-		</ul>
-	</div>
-
-{% endif %}</div></div></nav>
+		{% endif %}
+		{% if is_granted("ROLE_ADMIN") %}
+			<li>
+				<a class="dropdown-item" href="{{ path('admin') }}">
+					Dashboard</a>
+			</li>
+		{% endif %}
+		{% if is_granted("ROLE_USER") %}
+			<a class="dropdown-item" href="{{ path('app_logout') }}">Déconnexion</a>
+		</li>
+	</ul>
+</div>{% endif %}</div>
+</div></nav>

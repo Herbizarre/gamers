@@ -37,6 +37,28 @@ class CartController extends AbstractController
     }
 
     /**
+     * @Route("/addP/{id}", name="addP")
+     */
+    public function addP(Product $product, SessionInterface $session)
+    {
+        // On récupère le panier actuel
+        $panier = $session->get("panier", []);
+        $id = $product->getId();
+
+        if(!empty($panier[$id])){
+            $panier[$id]++;
+        }else{
+            $panier[$id] = 1;
+        }
+
+        // On sauvegarde dans la session
+        $session->set("panier", $panier);
+
+        $this->addFlash('messageA', 'Un article a été ajouter à votre panier.');
+        return $this->redirectToRoute("app_catalogue");
+    }
+
+    /**
      * @Route("/add/{id}", name="add")
      */
     public function add(Product $product, SessionInterface $session)
@@ -54,7 +76,7 @@ class CartController extends AbstractController
         // On sauvegarde dans la session
         $session->set("panier", $panier);
 
-        return $this->redirectToRoute("app_catalogue");
+        return $this->redirectToRoute("cart_index");
     }
 
     /**
